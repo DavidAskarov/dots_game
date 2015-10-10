@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties. 
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="angular.js"></script>
+        <script src="client.js"></script>
+        <style>
+            .colorButton{
+                background-color: lightgrey;
+            }
+            .borderRadius{
+                border-radius: 50%
+            }
+            .margin{
+                margin: 15px
+            }
+        </style>
+    </head>
+    <body>
+        <div ng-controller="setIp">
+            <h2>ИГРА В ТОЧКИ</h2>
+            <div>
+                <h4>Socket: {{ip}}:{{port}}</h4>
+            </div>
+            <div>
+                IP: <input ng-model="ip"/> 
+                Port: <input ng-model="port"/>
+                <input type="button" id="moving" value="Перейти" ng-click="setMyIp(ip, port)"/>
+            </div>
+        </div>
+        <div ng-controller="myCreateButtonCtrl" class = "container">
+            <table>
+                <tr ng-repeat="row in rows">
+                    <td ng-repeat="col in colums">
+                        <div ng-controller="myClickButtonCtrl">
+                            <input type="button" ng-class="colorBtn"  id="{{row+col}}" ng-click="clickButtom(row,col)"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div >
+            <h4>MY</h4>
+            <div  id="myCountPoint"></div>
+            <h4>Opponent</h4>
+            <div id="opponentCountPoint" ></div>
+        </div>
+    </body>
+</html>
